@@ -1,0 +1,56 @@
+/* Add these styles to your CSS file or inline styles
+.card-container {
+    border: 1px solid #ddd;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .card {
+    display: flex;
+    align-items: center;
+  }
+  
+  .card-img {
+    max-width: 100px;
+    max-height: 100px;
+    margin-right: 10px;
+  }
+  
+  .details {
+    flex: 1;
+  }
+   */
+  /* Style for the search bar */
+  input[type="stext"] {
+    background-color:#0f172a ;
+    padding: 8px;
+    margin: 10px;
+    width: 300px;
+    border: 1px solid #dddddd00;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+  }
+  /* Style for the "Buy" button */
+  .bnt {
+    margin: 10px;
+    background-color: #0f172a;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-left: 15px;
+  }
+  
+  .bnt:hover {
+    background-color: #172554;
+  }
+
+  .Buy{
+    text-align: center;
+
+  }
+  
