@@ -5,11 +5,15 @@ const User = require("./Models/User");
 const Product = require('./Models/Product');
 const bcrypt = require('bcryptjs');
 const authP = require('./checkAuth/auth');
+const bodyParser = require('body-parser');
+
 
 const app = express();
 app.use(cors());
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(bodyParser.json());
+
 
 app.post('/signup', async (req, res) => {
   const {
@@ -115,15 +119,15 @@ app.get('/profile', authMid, (req, res) => {
 app.post('/admin/add-product', authMid, async (req, res) => {
   const { title, description, price, brand, images } = req.body;
 
-  try {
-    let product = new Product({ title, description, price, brand, images });
-    product = await product.save();
+    try {
+        let product = new Product({ title , description , price ,  brand , images});
+        product = await product.save();
 
-    return res.send(product);
-  } catch (error) {
-    console.error('Error adding product:', error);
-    return res.status(500).send('Internal Server Error');
-  }
+        return res.send(product);
+    } catch (error) {
+        console.error('Error adding product:', error);
+        return res.status(500).send('Internal Server Error');
+    }
 });
 
 app.delete('/admin/delete-product/:productId', authMid, async (req, res) => {
@@ -268,9 +272,9 @@ app.get('/total', authP, async (req, res) => {
 });
 
 mongoose.connect('mongodb+srv://amr682003:AmrA682003@cluster0.mjxdqxw.mongodb.net/?retryWrites=true&w=majority')
-  .then(() => {
-    console.log('connected to MongoDB')
-    app.listen(9000, () => console.log('app started on port 9000'))
-  }).catch((error) => {
-    console.log('cant connect to mongodb' + error)
-  })
+    .then(() => {
+        console.log('connected to MongoDB')
+        app.listen(9000, () => console.log('app started on port 9000'))
+    }).catch((error) => {
+        console.log('cant connect to mongodb' + error)
+    })
