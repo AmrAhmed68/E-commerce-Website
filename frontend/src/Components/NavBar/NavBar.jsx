@@ -43,6 +43,10 @@ export const NavBar = () => {
         </li>
 
         <li>
+          <NavLink to="/addProduct">addProduct</NavLink>
+        </li>
+
+        <li>
             <NavLink to="/Login"> LogIn </NavLink>
         </li>
 

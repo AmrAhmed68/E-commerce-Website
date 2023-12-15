@@ -5,11 +5,15 @@ const User=require("./Models/User");
 const Product = require('./Models/Product');
 const bcrypt = require('bcryptjs');
 const authP = require('./checkAuth/auth');
+const bodyParser = require('body-parser');
+
 
 const app = express();
 app.use(cors());
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(bodyParser.json());
+
 
 app.post('/signup', async (req, res) => {
     const {
@@ -116,13 +120,14 @@ app.post('/admin/add-product', authMid , async (req, res) => {
     const { title , description , price ,  brand , images} = req.body;
 
     try {
-        let product = new Product({ title , description , price ,  brand , images});
+        let product = new Product({ title , description , brand , price , images});
         product = await product.save();
+        res.status(201).json({ success: true, product });
 
-        return res.send(product);
+        // return res.send(product);
     } catch (error) {
         console.error('Error adding product:', error);
-        return res.status(500).send('Internal Server Error');
+       res.status(500).json({ success: false, error: 'Internal Server Error' });
     }
 });
 
