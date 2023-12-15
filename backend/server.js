@@ -267,7 +267,7 @@ app.get('/total', authP, async (req, res) => {
     
 });
 
-mongoose.connect('mongodb+srv://amr682003:AmrA682003@cluster0.mjxdqxw.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://aw172759:01123769932aa@cluster0.uv5tegt.mongodb.net/?retryWrites=true&w=majority')
     .then(() => {
         console.log('connected to MongoDB')
         app.listen(9000, () => console.log('app started on port 9000'))
