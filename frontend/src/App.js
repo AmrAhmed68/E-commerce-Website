@@ -10,6 +10,7 @@ import  Search  from './Components/Search/Search';
 import Contact from "./Components/contant/Contact";
 import Profile from "./Components/Profile/profile";
 import ProductList from './Components/NavBar/ProductList';
+import AddProduct from "./Components/addProduct/addProduct";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
             <Route path="/Contact" element={<Contact />} />
             <Route path="/Profile" element={<Profile />} />
             <Route path="/products/:brand" element={<ProductList />} />
+            <Route path="/AddProduct" element={<AddProduct/>} />
           </Routes>
     </div>
   );
