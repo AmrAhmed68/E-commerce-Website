@@ -14,7 +14,15 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
-
+/*{
+  "username":"Wael",
+  "password":"200422",
+  "confirmPassword":"200422",
+  "email":"aw172759@gmail.com",
+  "phoneNumber":"01123766932",
+  "age":"20",
+  "country":"Giza"
+ }*/
 app.post('/signup', async (req, res) => {
   const {
     username,
@@ -119,15 +127,15 @@ app.get('/profile', authMid, (req, res) => {
 app.post('/admin/add-product', authMid, async (req, res) => {
   const { title, description, price, brand, images } = req.body;
 
-    try {
-        let product = new Product({ title , description , price ,  brand , images});
-        product = await product.save();
-
-        return res.send(product);
-    } catch (error) {
-        console.error('Error adding product:', error);
-        return res.status(500).send('Internal Server Error');
-    }
+  try {
+    // Creating a new product with the authenticated user
+    let product = new Product({ title, description, price, brand, images, user: req.user._id });
+    product = await product.save();
+    return res.send(product);
+  } catch (error) {
+    console.error('Error adding product:', error);
+    return res.status(500).send('Internal Server Error');
+  }
 });
 
 app.delete('/admin/delete-product/:productId', authMid, async (req, res) => {
@@ -271,10 +279,10 @@ app.get('/total', authP, async (req, res) => {
 
 });
 
-mongoose.connect('mongodb+srv://amr682003:AmrA682003@cluster0.mjxdqxw.mongodb.net/?retryWrites=true&w=majority')
-    .then(() => {
-        console.log('connected to MongoDB')
-        app.listen(9000, () => console.log('app started on port 9000'))
-    }).catch((error) => {
-        console.log('cant connect to mongodb' + error)
-    })
+mongoose.connect('mongodb+srv://aw172759:01123769932aa@cluster0.uv5tegt.mongodb.net/?retryWrites=true&w=majority')
+  .then(() => {
+    console.log('connected to MongoDB')
+    app.listen(9000, () => console.log('app started on port 9000'))
+  }).catch((error) => {
+    console.log('cant connect to mongodb' + error)
+  })
